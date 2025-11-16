@@ -1,0 +1,31 @@
+port: 7880
+
+# Configuração RTC (WebRTC)
+rtc:
+  tcp_port: 7881
+  udp_port: 7881
+  use_external_ip: true
+  # O Coolify vai expor via proxy reverso, mas para WebRTC precisa do IP/domínio público
+  # Substitua pelo IP público do seu servidor se necessário
+  # external_ip: "SEU_IP_PUBLICO"  # Descomente e ajuste se necessário
+
+# Chaves de API (MUDE ESTAS CHAVES!)
+keys:
+  # Formato: api_key: api_secret
+  devkey: dev_secret_change_me_in_production
+  # Adicione mais chaves conforme necessário
+  # prodkey: prod_secret_xyz123
+
+# Logging
+log_level: info
+
+# Redis (opcional, para escalar múltiplas instâncias)
+# redis:
+#   address: redis:6379
+
+# TURN server (opcional, para NAT traversal em redes complexas)
+# turn:
+#   enabled: true
+#   domain: turn.itfp.eu
+#   tls_port: 5349
+#   udp_port: 3478
