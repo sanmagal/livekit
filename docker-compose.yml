@@ -10,7 +10,7 @@ services:
       - "7881:7881/tcp"
       - "7881:7881/udp"
     environment:
-      LIVEKIT_KEYS: devkey:dev_secret_change_me_in_production
+      LIVEKIT_KEYS: devkey: dev_secret_change_me_in_production
       LIVEKIT_LOG_LEVEL: info
     networks:
       - livekit-network
