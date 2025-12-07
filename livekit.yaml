@@ -2,15 +2,16 @@ port: 7880
 
 rtc:
   tcp_port: 7881
-  udp_port: 7881
+  port_range_start: 50000
+  port_range_end: 60000
   use_external_ip: true
-  # If needed, set this explicitly:
-  # external_ip: "YOUR_PUBLIC_IP"
+  # If auto-detect fails, set this explicitly:
+  # external_ip: "YOUR_VPS_PUBLIC_IP"
 
-#keys:
-  # api_key: api_secret
-  #devkey: dev_secret_change_me_in_production
-  # prodkey: prod_secret_xyz123
+keys:
+  # CHANGE THESE IN PRODUCTION
+  devkey: secret
+  # prodkey: "your-secure-random-secret"
 
 log_level: info
 
@@ -22,3 +23,7 @@ turn:
   domain: turn.itfp.eu
   tls_port: 5349
   udp_port: 3478
+  # If you terminate TLS in a reverse proxy in front of TURN, you may not need certs here.
+  # Otherwise you’ll need:
+  # cert_file: /etc/letsencrypt/live/turn.itfp.eu/fullchain.pem
+  # key_file: /etc/letsencrypt/live/turn.itfp.eu/privkey.pem
