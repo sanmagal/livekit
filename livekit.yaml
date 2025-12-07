@@ -7,9 +7,9 @@ rtc:
   # If needed, set this explicitly:
   # external_ip: "YOUR_PUBLIC_IP"
 
-keys:
+#keys:
   # api_key: api_secret
-  devkey: dev_secret_change_me_in_production
+  #devkey: dev_secret_change_me_in_production
   # prodkey: prod_secret_xyz123
 
 log_level: info
