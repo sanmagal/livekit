@@ -16,15 +16,14 @@ services:
     restart: unless-stopped
     depends_on:
       - redis
-    command: --config /etc/livekit.yaml
+    command: --config /etc/livekit/livekit.yaml
     volumes:
-      - ./livekit.yaml:/etc/livekit.yaml:ro
+      - ./livekit.yaml:/etc/livekit/livekit.yaml:ro
     expose:
       - "7880"
       - "7881"
       - "3478/udp"
       - "5349"
-    
     networks:
       - coolify
 
