@@ -19,11 +19,12 @@ services:
     command: --config /etc/livekit/livekit.yaml
     volumes:
       - ./livekit.yaml:/etc/livekit/livekit.yaml:ro
-    expose:
-      - "7880"
-      - "7881"
-      - "3478/udp"
-      - "5349"
+    ports:
+      - "7880:7880"               # HTTP / WS
+      - "7881:7881"               # WebRTC TCP
+      - "3478:3478/udp"           # TURN UDP
+      - "5349:5349"               # TURN TLS
+      - "50000-60000:50000-60000/udp" # WebRTC media
     networks:
       - coolify
 
