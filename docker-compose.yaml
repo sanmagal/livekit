@@ -16,8 +16,8 @@ services:
     restart: unless-stopped
     depends_on:
       - redis
-    command: --config /etc/livekit/livekit.yaml
-    volumes:
+    #command: --config /etc/livekit/livekit.yaml
+    #volumes:
       - ./livekit.yaml:/etc/livekit/livekit.yaml:ro
     expose:
       - "7880"
