@@ -1,20 +1,37 @@
-version: "3.8"
+version: "3.9"
 
 services:
+  redis:
+    image: redis:7-alpine
+    container_name: livekit-redis
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    networks:
+      - coolify
+
   livekit:
     image: livekit/livekit-server:latest
     container_name: livekit-server
     restart: unless-stopped
-    ports:
-      - "7880:7880"
-      - "7881:7881/tcp"
-      - "7881:7881/udp"
+    depends_on:
+      - redis
+    command: --config /etc/livekit.yaml
+    volumes:
+      - ./livekit.yaml:/etc/livekit.yaml:ro
+    expose:
+      - "7880"
+      - "7881"
+      - "3478/udp"
+      - "5349"
     environment:
-      LIVEKIT_KEYS: "devkey: dev_secret_change_me_in_production"
       LIVEKIT_LOG_LEVEL: "info"
     networks:
-      - livekit-network
+      - coolify
 
 networks:
-  livekit-network:
-    driver: bridge
+  coolify:
+    external: true
+
+volumes:
+  redis-data:
