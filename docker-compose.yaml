@@ -24,8 +24,7 @@ services:
       - "7881"
       - "3478/udp"
       - "5349"
-    environment:
-      LIVEKIT_LOG_LEVEL: "info"
+    
     networks:
       - coolify
 
